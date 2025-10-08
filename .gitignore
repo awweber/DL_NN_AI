@@ -12,6 +12,7 @@ venv/
 # Ignore OS files
 .DS_Store
 Thumbs.db
+__MACOSX/
 
 # Ignore logs
 *.log
@@ -19,3 +20,6 @@ Thumbs.db
 # Ignore other common files
 *.swp
 *.swo
+
+# ignore path of downloaded datasets and models
+data/
