@@ -23,3 +23,5 @@ __MACOSX/
 
 # ignore path of downloaded datasets and models
 data/
+*.keras
+*.model
