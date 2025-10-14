@@ -10,3 +10,6 @@ body {
 .highlighted {
     background-color: yellow;
 } 
+.underlined {
+    text-decoration: underline;
+    font-weight: bold;}
