@@ -59,7 +59,7 @@ try:
 except NameError:
     xrange = range
 
-
+# main function of the game
 def main(shouldEmulateKeyPress, onGameover):
     global SCREEN, FPSCLOCK
     pygame.init()
@@ -134,7 +134,8 @@ def main(shouldEmulateKeyPress, onGameover):
     )
 
     while True:
-        # movementInfo = showWelcomeAnimation()
+        # movementInfo = showWelcomeAnimation() # show welcome screen until a key is pressed
+        # Welcome Animation überspringen
         playery = int((SCREENHEIGHT - IMAGES['player'][0].get_height()) / 2)
         movementInfo = {
             'playery': np.random.randint(playery - 8, playery + 8),
@@ -144,7 +145,7 @@ def main(shouldEmulateKeyPress, onGameover):
         # print(movementInfo)
         crashInfo = mainGame(movementInfo, shouldEmulateKeyPress)
         onGameover(crashInfo)
-
+        # Ausblenden des Game Over Screens
         # showGameOverScreen(crashInfo)
 
 
@@ -255,13 +256,15 @@ def mainGame(movementInfo, shouldEmulateKeyPress):
                     playerVelY = playerFlapAcc
                     playerFlapped = True
                     SOUNDS['wing'].play()
-
+        # Emulierte Tastatureingabe durch Callback-Funktion
+        # relevante Spielparameter für die Callback-Funktion
         params = {
             'playerVelY': playerVelY,
             'playery': playery,
             'upperPipes': upperPipes,
             'lowerPipes': lowerPipes
         }
+        # Emualiere Tastendruck basierend auf der Callback-Funktion
         if shouldEmulateKeyPress(params):
             if playery > -2 * IMAGES['player'][0].get_height():
                 playerVelY = playerFlapAcc
