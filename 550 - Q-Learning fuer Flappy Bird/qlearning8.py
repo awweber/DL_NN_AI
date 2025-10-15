@@ -17,14 +17,14 @@ def paramsToState(params):
     playerVelY = params['playerVelY']
     playery = params["playery"]
 
-    if int(params["upperPipes"][0]['x']) < 56:
+    if int(params["upperPipes"][0]['x']) < 40:
         index = 1
     else: 
         index = 0
 
     upperPipeX = round(int(params["upperPipes"][index]['x']) / 5) * 5
     upperPipeY = int(params["upperPipes"][index]['y'])
-
+    # Abstand zum oberen Rohr
     yDiff = round((playery - upperPipeY) / 5) * 5
 
     return str(playerVelY) + "_" + str(yDiff) + "_" + str(upperPipeX)
@@ -43,7 +43,7 @@ def onGameover(gameInfo):
     gameScores.append(gameInfo['score'])
 
     if gameCounter % 100 == 0:
-        print(str(gameCounter) + ": " + str(np.mean(gameScores[-100:])))
+        print("Spiel " + str(gameCounter) + ": Score " + str(np.mean(gameScores[-100:])))
 
     # Q updaten für die vorherige Aktion
     #  -> Die vorherige Aktion war nicht erfolgreich!

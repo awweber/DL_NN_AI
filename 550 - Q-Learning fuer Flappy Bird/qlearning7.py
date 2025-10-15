@@ -36,7 +36,7 @@ def onGameover(gameInfo):
     global oldAction
     global gameCounter
 
-    print(str(gameCounter) + ":" + str(gameInfo['score']))
+    print("Spiel " + str(gameCounter) + ": Score " + str(gameInfo['score']))
 
     # Q updaten für die vorherige Aktion
     #  -> Die vorherige Aktion war nicht erfolgreich!
@@ -54,7 +54,8 @@ def onGameover(gameInfo):
     oldState = None
     oldAction = None
 
-    if gameCounter % 10000 == 0:
+    # Q speichern
+    if gameCounter % 10000 == 0: # Alle 10000 Spiele speichern
         with open("Q/" + str(gameCounter) + ".pickle", "wb") as file:
             pickle.dump(dict(Q), file)
 

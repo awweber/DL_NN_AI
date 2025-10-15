@@ -1,3 +1,8 @@
+# Finale Version mit Laden von Q aus Datei (Q wird nicht gespeichert)
+# Mit Grafik
+# Q-Learning mit Diskretisierung der State-Action-Werte
+# State = (playerVelY, yDiff, upperPipeX)
+# Action = (Nicht springen, springen)
 import flappy
 import numpy as np
 import sys
@@ -12,8 +17,12 @@ gamma = 1
 # Q[state] = (Nicht springen, springen)
 Q = None # defaultdict(lambda: [0, 0])
 
+# Q aus Datei laden
 with open("Q.pickle", "rb") as file:
     Q = defaultdict(lambda: [0, 0], pickle.load(file))
+    print("Q geladen. Anzahl Einträge: " + str(len(Q)))
+    for key in list(Q.keys())[:100]:
+        print("  " + str(key) + ": " + str(Q[key]))
 
 def paramsToState(params):
     playerVelY = params['playerVelY']
